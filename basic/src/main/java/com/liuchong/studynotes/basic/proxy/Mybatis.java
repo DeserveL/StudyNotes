@@ -17,26 +17,25 @@ package com.liuchong.studynotes.basic.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * @author DeserveL
- * @date 2017/3/8 15:04
+ * @date 2017/3/8 15:39
  * @since 1.0.0
  */
-public class ProxyHandel implements InvocationHandler{
+public class Mybatis {
+    public static void main(String[] args) {
+        InvocationHandler handler = new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                System.out.println(method.getName());
+                return null;
+            }
+        };
 
-    private Object proxied;
+        Subject face = (Subject) Proxy.newProxyInstance(Subject.class.getClassLoader(),new Class[]{Subject.class},handler);
 
-    public ProxyHandel(Object proxied){
-        this.proxied = proxied;
-    }
-
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        //在转调具体目标对象之前，可以执行一些功能处理
-
-        //转调具体目标对象的方法
-        return method.invoke(proxied, args);
-
-        //在转调具体目标对象之后，可以执行一些功能处理
+        face.doSomething();
     }
 }

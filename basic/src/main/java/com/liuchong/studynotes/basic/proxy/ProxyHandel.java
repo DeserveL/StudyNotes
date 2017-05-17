@@ -31,12 +31,20 @@ public class ProxyHandel implements InvocationHandler{
         this.proxied = proxied;
     }
 
+    /**
+     *
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable
+     */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         //在转调具体目标对象之前，可以执行一些功能处理
 
         //转调具体目标对象的方法
-        return method.invoke(proxied, args);
-
+        method.invoke(proxied, args);
+        return "123";
         //在转调具体目标对象之后，可以执行一些功能处理
     }
 }

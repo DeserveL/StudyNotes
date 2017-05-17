@@ -22,7 +22,8 @@ package com.liuchong.studynotes.basic.proxy;
  */
 public class RealSubject implements Subject {
 
-    public void doSomething() {
+    public String doSomething() {
         System.out.println("我是做事的。");
+        return "12";
     }
 }

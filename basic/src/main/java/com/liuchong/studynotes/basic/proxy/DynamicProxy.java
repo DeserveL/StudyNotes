@@ -39,7 +39,8 @@ public class DynamicProxy {
         ----指定被代理对象所实现的接口
         InvocationHandler h ----指定需要调用的InvocationHandler对象*/
         Subject proxySubject = (Subject)Proxy.newProxyInstance(Subject.class.getClassLoader(),new Class[]{Subject.class},new ProxyHandel(real));
-        proxySubject.doSomething();
+        String a = proxySubject.doSomething();
+        System.out.println(a);
     }
 
     public static void creatProxyClassFile(){

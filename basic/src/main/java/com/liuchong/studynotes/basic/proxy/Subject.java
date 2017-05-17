@@ -6,5 +6,5 @@ package com.liuchong.studynotes.basic.proxy;
  * @since 1.0.0
  */
 public interface Subject {
-    void doSomething();
+    String doSomething();
 }

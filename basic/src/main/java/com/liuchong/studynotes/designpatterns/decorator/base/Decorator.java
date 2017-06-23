@@ -13,20 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liuchong.studynotes.designpatterns.observer.base;
+package com.liuchong.studynotes.designpatterns.decorator.base;
 
 /**
+ * 抽象装饰器父类
+ *
  * @author DeserveL
- * @date 2017/6/21 10:44
+ * @date 2017/6/23 11:31
  * @since 1.0.0
  */
-public class Client {
-    public static void main(String[] args) {
-        Observable observable = new Observable();
+public abstract class Decorator implements Component {
 
-        observable.addObserver(new ConcreteObserver1());
-        observable.addObserver(new ConcreteObserver2());
+    protected Component component;
 
-        observable.change();
+    public Decorator(Component component){
+        super();
+        this.component = component;
+    }
+
+    @Override
+    public void method() {
+        component.method();
     }
 }

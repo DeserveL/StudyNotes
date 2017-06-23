@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liuchong.studynotes.designpatterns.observer.base;
+package com.liuchong.studynotes.designpatterns.decorator.base;
 
 /**
  * @author DeserveL
- * @date 2017/6/21 10:44
+ * @date 2017/6/23 11:45
  * @since 1.0.0
  */
 public class Client {
     public static void main(String[] args) {
-        Observable observable = new Observable();
+        Component component = new ConcreteComponent();
+        component.method();
 
-        observable.addObserver(new ConcreteObserver1());
-        observable.addObserver(new ConcreteObserver2());
+        ConcreteDecoratorA concreteDecoratorA = new ConcreteDecoratorA(component);
+        concreteDecoratorA.method();
+        concreteDecoratorA.methodA();
 
-        observable.change();
+        ConcreteDecoratorB concreteDecoratorB = new ConcreteDecoratorB(component);
+        concreteDecoratorB.method();
+        concreteDecoratorB.methodB();
+
+        concreteDecoratorB = new ConcreteDecoratorB(concreteDecoratorA);//装饰成A以后再装饰成B
+        concreteDecoratorB.method();
+        concreteDecoratorB.methodB();
     }
 }

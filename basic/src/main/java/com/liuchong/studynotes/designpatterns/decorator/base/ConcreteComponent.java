@@ -13,20 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.liuchong.studynotes.designpatterns.observer.base;
+package com.liuchong.studynotes.designpatterns.decorator.base;
 
 /**
+ * 待装饰对象
+ *
  * @author DeserveL
- * @date 2017/6/21 10:44
+ * @date 2017/6/23 11:27
  * @since 1.0.0
  */
-public class Client {
-    public static void main(String[] args) {
-        Observable observable = new Observable();
-
-        observable.addObserver(new ConcreteObserver1());
-        observable.addObserver(new ConcreteObserver2());
-
-        observable.change();
+public class ConcreteComponent implements Component {
+    @Override
+    public void method() {
+        System.out.println("原始的方法");
     }
 }

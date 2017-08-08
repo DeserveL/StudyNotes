@@ -22,7 +22,7 @@
         <dependencies>
             <!-- 子模块-->
 
-            <!-- test -->
+            <!-- servlet -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

@@ -17,6 +17,7 @@ package com.deservel.springboot.demo.threadpool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -37,5 +38,8 @@ public class AsyncTask {
     public void doTask1(int i) throws InterruptedException{
         TimeUnit.SECONDS.sleep(10);
         logger.info("Task"+i+" started."+ new Date());
+        if(i%2 == 0){
+            this.doTask1(i+1001);
+        }
     }
 }

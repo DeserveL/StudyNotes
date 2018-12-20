@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.deservel.springboot.demo.threadpool;
+package com.deservel.springboot.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Configuration
 @EnableAsync
-public class TaskExecutePool {
+public class TaskExecutePoolConfig {
 
     private static int corePoolSize = 10;
 

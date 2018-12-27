@@ -13,27 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.deservel;
+package com.deservel.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author DeserveL
- * @date 2018-12-27 0:12
+ * @date 2018-12-27 15:18
  * @since 1.0.0
  */
 @RestController
-public class DiscoveryController {
-    @Autowired
-    DiscoveryClient discoveryClient;
+public class CreditController {
 
-    @GetMapping("/dc")
-    public String dc() {
-        String services = "Services: " + discoveryClient.getServices();
-        System.out.println(services);
-        return services;
+    int credit = 0;
+
+    @RequestMapping("/addCredit")
+    public Integer addCredit(){
+        System.out.println("添加积分成功");
+        return ++credit;
     }
 }

@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.deservel;
+package com.deservel.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 服务注册中心
- *
  * @author DeserveL
- * @date 2018-12-26 23:53
+ * @date 2018-12-27 15:15
  * @since 1.0.0
  */
-@EnableEurekaServer
-@SpringBootApplication
-public class EurekaServerApplication {
+@RestController
+public class StockController {
 
-    public static void main(String[] args) {
-        SpringApplication.run(EurekaServerApplication.class, args);
+    int stock = 10;
+
+    @RequestMapping("/reduceStock")
+    public Integer reduceStock() {
+        System.out.println("库存减少成功");
+        return --stock;
     }
 }

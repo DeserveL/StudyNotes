@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @date 2018-12-27 15:32
  * @since 1.0.0
  */
-@FeignClient("storage")
+@FeignClient(name = "storage", fallback = StorageClientFallBack.class)
 public interface StorageClient {
 
     /**

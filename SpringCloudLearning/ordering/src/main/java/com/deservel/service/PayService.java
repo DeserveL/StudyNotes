@@ -18,7 +18,6 @@ package com.deservel.service;
 import com.deservel.client.CreditClient;
 import com.deservel.client.StockClient;
 import com.deservel.client.StorageClient;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,33 +36,18 @@ public class PayService {
     @Autowired
     StorageClient storageClient;
 
-    @HystrixCommand(fallbackMethod = "stockFallback")
     public void stock(){
         Integer stock = stockClient.reduceStock();
         System.out.println("库存数量：" + stock);
     }
 
-    public void stockFallback() {
-        System.out.println("库存系统调用失败");
-    }
-
-    @HystrixCommand(fallbackMethod = "storageFallback")
     public void storage(){
         storageClient.storage();
         System.out.println("发货完成。");
     }
 
-    public void storageFallback() {
-        System.out.println("发货系统调用失败");
-    }
-
-    @HystrixCommand(fallbackMethod = "creditFallback")
     public void credit(){
         Integer credit = creditClient.addCredit();
         System.out.println("积分：" + credit);
-    }
-
-    public void creditFallback() {
-        System.out.println("积分系统调用失败");
     }
 }

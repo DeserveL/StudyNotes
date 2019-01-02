@@ -17,6 +17,7 @@ package com.deservel.controller;
 
 import com.deservel.service.PayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,9 @@ import java.util.Map;
 @RestController
 public class PayController {
 
+    @Value("${username}")
+    String username;
+
     @Autowired
     PayService payService;
 
@@ -43,9 +47,9 @@ public class PayController {
             payService.stock();
             payService.storage();
             payService.credit();
-            rs.put("msg", "支付成功");
+            rs.put("msg", "支付成功" + username);
         } else {
-            rs.put("msg", "支付失败");
+            rs.put("msg", "支付失败" + username);
         }
         return rs;
     }

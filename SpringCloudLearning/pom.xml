@@ -15,6 +15,7 @@
         <module>stock</module>
         <module>storage</module>
         <module>credit</module>
+        <module>config-server-git</module>
     </modules>
 
 </project>
